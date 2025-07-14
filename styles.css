@@ -1,0 +1,296 @@
+/* Estilos Generales y Reseteo */
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.system-container {
+    background-color: #ffffff;
+    border-radius: 0;
+    box-shadow: none;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 100vh;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+/* Encabezado del Sistema */
+.system-header {
+    text-align: center;
+    padding: 20px 20px 15px 20px; /* Un poco menos de padding para hacerlo más compacto */
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.system-header h1 {
+    color: #0056b3;
+    margin: 0;
+    font-size: 2em; /* Título un poco más pequeño */
+    font-weight: 700;
+}
+
+/* Contenedor principal del contenido de la app (flexible en altura) */
+.app-content {
+    flex-grow: 1; /* Permite que este contenedor use el espacio restante */
+    padding: 20px; /* Padding general para todo el contenido */
+    max-width: 1200px; /* Limita el ancho total en pantallas grandes */
+    margin: 0 auto; /* Centra el contenido */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio entre la sección de preguntas y resultados */
+}
+
+/* SECCIÓN DE PREGUNTAS (3 Columnas) */
+.questions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual ancho */
+    gap: 15px; /* Espacio más pequeño entre las tarjetas */
+    align-items: stretch; /* Asegura que las tarjetas en la misma fila tengan la misma altura */
+}
+
+/* SECCIÓN DE RESULTADOS (2 Columnas) */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas de igual ancho */
+    gap: 15px; /* Espacio entre las tarjetas de resultados */
+    align-items: stretch; /* Asegura que las tarjetas en la misma fila tengan la misma altura */
+    margin-top: 20px; /* Separación de la sección de preguntas */
+}
+
+
+/* Estilo para cada "Tarjeta" (Panel de input o info) */
+.panel-section {
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 15px; /* ¡Más pequeño para que los cuadros no sean tan grandes! */
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Espacio más pequeño entre elementos dentro de la tarjeta */
+    min-height: 100px; /* Altura mínima para tarjetas, ajusta si es necesario */
+}
+
+/* Ajuste específico para el panel de resultado de ciclo que va en la sección de preguntas */
+.panel-ciclo-resultado {
+    /* Puedes añadir estilos específicos si quieres que se vea distinto */
+    /* Por ejemplo, un color de borde diferente si está en la sección de preguntas */
+    border-color: #007bff; /* Un azul para destacar el ciclo asignado */
+}
+
+
+/* Títulos de Sección y Panel */
+.section-title, .panel-heading {
+    font-size: 1.05em; /* Un poco más pequeños */
+    font-weight: 600;
+    color: #34495e;
+    margin-top: 0;
+    margin-bottom: 10px; /* Menos margen inferior */
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px; /* Menos padding inferior */
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+}
+.panel-heading {
+    border-bottom-color: #28a745;
+}
+
+/* Grupos de Entrada de Datos */
+.input-group {
+    /* Inherits from .panel-section */
+}
+
+.system-label {
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.system-select,
+.system-input {
+    width: 100%;
+    padding: 10px 12px; /* Un poco más pequeños */
+    border: 1px solid #cdd4da;
+    border-radius: 4px;
+    font-size: 0.95em; /* Fuente un poco más pequeña */
+    color: #495057;
+    background-color: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+.system-select:focus,
+.system-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.system-select:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+    color: #888;
+}
+
+/* Textos de Información y Error */
+.info-text {
+    font-size: 0.85em; /* Más pequeño */
+    color: #6c757d;
+    margin-top: 3px; /* Menos margen */
+    margin-bottom: 0;
+}
+
+.error-text {
+    font-size: 0.85em; /* Más pequeño */
+    color: #dc3545;
+    margin-top: 3px;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+/* Paneles de Información (Resultados) */
+.info-panel {
+    /* Inherits from .panel-section */
+}
+
+.panel-info-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px; /* Menos margen */
+    font-size: 1em; /* Ajustado */
+    color: #343a40;
+}
+
+.panel-info-label {
+    font-weight: 600;
+    color: #555;
+}
+
+.highlight-value {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.highlight-date {
+    font-weight: bold;
+    color: #28a745;
+}
+
+.date-display p, .details-display p {
+    margin: 6px 0; /* Menos margen */
+    font-size: 1em; /* Ajustado */
+    color: #343a40;
+}
+
+#diasProrrateo, #proporcionalPagar {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Estilo para la fórmula de cálculo */
+.formula-text {
+    font-size: 1.1em; /* Slightly larger for readability */
+    font-weight: bold;
+    color: #34495e;
+    text-align: center;
+    background-color: #e9f7ef; /* Light green background */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #28a745; /* Green border */
+    margin-top: 10px;
+}
+
+
+/* RESPONSIVIDAD */
+/* Para pantallas medianas (tablets y laptops pequeñas) */
+@media (max-width: 992px) {
+    .questions-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas para preguntas */
+        gap: 15px;
+    }
+    .results-grid {
+        grid-template-columns: 1fr; /* 1 columna para resultados en tablet */
+        gap: 15px;
+    }
+    .app-content {
+        padding: 15px;
+    }
+    .system-header {
+        padding: 15px 15px 10px 15px;
+    }
+    .panel-section {
+        padding: 12px; /* Más pequeño aún */
+    }
+    .section-title, .panel-heading {
+        font-size: 0.95em;
+        margin-bottom: 8px;
+    }
+    .system-select, .system-input {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+    .info-text, .error-text {
+        font-size: 0.8em;
+    }
+    .panel-info-line, .date-display p, .details-display p, .formula-text {
+        font-size: 0.9em; /* Adjust formula text size for smaller screens */
+    }
+    /* El panel de ciclo resultado que abarca 2 columnas en 3 columnas, ahora abarca 1 en 2 columnas */
+    .panel-ciclo-resultado {
+        grid-column: span 1; /* Por defecto ocupa 1 columna */
+    }
+}
+
+/* Para móviles */
+@media (max-width: 600px) {
+    .questions-grid, .results-grid {
+        grid-template-columns: 1fr; /* Una sola columna para todo */
+        gap: 10px; /* Más compacto */
+    }
+    .app-content {
+        padding: 10px;
+    }
+    .system-header h1 {
+        font-size: 1.8em;
+    }
+    .panel-section {
+        padding: 10px;
+        min-height: auto; /* Eliminar altura mínima en móviles */
+    }
+    .section-title, .panel-heading {
+        font-size: 0.9em;
+        margin-bottom: 5px;
+    }
+    .system-select, .system-input {
+        padding: 7px 8px;
+        font-size: 0.85em;
+    }
+    .info-text, .error-text {
+        font-size: 0.75em;
+    }
+    .panel-info-line, .date-display p, .details-display p, .formula-text {
+        font-size: 0.85em; /* Adjust formula text size for mobile */
+    }
+    .panel-ciclo-resultado {
+        grid-column: span 1; /* Sigue ocupando 1 columna */
+    }
+}
