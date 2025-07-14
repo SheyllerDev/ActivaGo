@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mensajeTextoElement = document.getElementById('mensajeTexto');
 
     // --- TIMEOUT LÓGICA ---
-    const INACTIVITY_TIMEOUT = 2 * 60 * 1000; // 5 minutos en milisegundos
+    const INACTIVITY_TIMEOUT = 1 * 60 * 1000; // 1 minuto en milisegundos
     let timeoutId;
 
     function startTimeout() {
