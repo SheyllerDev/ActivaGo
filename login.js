@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { document: '43800554', name: 'ALBAN TORRES ANGELICA MARIA' },
         { document: '77088069', name: 'ALBERCA GARCIA LUIS ODILVER' },
         { document: '74227179', name: 'ALBORNOZ RAMOS EMILDA' },
+        { document: '47604343', name: 'Sheyller Machoa' },
         { document: '44110049', name: 'APOLAYA CÁCERES ALDO ANDRÉS' }
     ];
 
