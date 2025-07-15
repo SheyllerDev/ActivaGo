@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function startTimeout() {
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => {
-            alert('Su sesión ha expirado debido a inactividad.');
+            alert('Su sesión ha expirado.');
             window.location.href = 'login.html'; // Redirigir a la página de login
         }, INACTIVITY_TIMEOUT);
     }
