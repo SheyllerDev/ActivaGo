@@ -1,296 +1,241 @@
-/* Estilos Generales y Reseteo */
+/* === ESTILOS MODERNOS - DISEÑO 2025 === */
+
+/* --- Configuración General y Fuentes --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 body {
-    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Poppins', 'Segoe UI', 'Roboto', sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f0f2f5;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    width: 100vw;
-    box-sizing: border-box;
-    overflow-y: auto;
+    background-color: #F7F8FC;
+    color: #3F3D56;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .system-container {
-    background-color: #ffffff;
-    border-radius: 0;
-    box-shadow: none;
+    background-color: transparent;
     width: 100%;
-    max-width: 100%;
-    height: auto;
-    min-height: 100vh;
-    padding: 0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
 }
 
-/* Encabezado del Sistema */
+/* --- Encabezado --- */
 .system-header {
-    text-align: center;
-    padding: 20px 20px 15px 20px; /* Un poco menos de padding para hacerlo más compacto */
-    border-bottom: 1px solid #e0e0e0;
-    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2rem;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #EAEBF0;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
 .system-header h1 {
-    color: #0056b3;
+    color: #6C63FF;
     margin: 0;
-    font-size: 2em; /* Título un poco más pequeño */
+    font-size: 1.5em;
     font-weight: 700;
 }
 
-/* Contenedor principal del contenido de la app (flexible en altura) */
-.app-content {
-    flex-grow: 1; /* Permite que este contenedor use el espacio restante */
-    padding: 20px; /* Padding general para todo el contenido */
-    max-width: 1200px; /* Limita el ancho total en pantallas grandes */
-    margin: 0 auto; /* Centra el contenido */
+.header-user-info {
     display: flex;
-    flex-direction: column;
-    gap: 20px; /* Espacio entre la sección de preguntas y resultados */
+    align-items: center;
+    gap: 1rem;
 }
 
-/* SECCIÓN DE PREGUNTAS (3 Columnas) */
-.questions-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual ancho */
-    gap: 15px; /* Espacio más pequeño entre las tarjetas */
-    align-items: stretch; /* Asegura que las tarjetas en la misma fila tengan la misma altura */
-}
-
-/* SECCIÓN DE RESULTADOS (2 Columnas) */
-.results-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas de igual ancho */
-    gap: 15px; /* Espacio entre las tarjetas de resultados */
-    align-items: stretch; /* Asegura que las tarjetas en la misma fila tengan la misma altura */
-    margin-top: 20px; /* Separación de la sección de preguntas */
-}
-
-
-/* Estilo para cada "Tarjeta" (Panel de input o info) */
-.panel-section {
-    background-color: #ffffff;
-    border: 1px solid #e9ecef;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    padding: 15px; /* ¡Más pequeño para que los cuadros no sean tan grandes! */
-    display: flex;
-    flex-direction: column;
-    gap: 8px; /* Espacio más pequeño entre elementos dentro de la tarjeta */
-    min-height: 100px; /* Altura mínima para tarjetas, ajusta si es necesario */
-}
-
-/* Ajuste específico para el panel de resultado de ciclo que va en la sección de preguntas */
-.panel-ciclo-resultado {
-    /* Puedes añadir estilos específicos si quieres que se vea distinto */
-    /* Por ejemplo, un color de borde diferente si está en la sección de preguntas */
-    border-color: #007bff; /* Un azul para destacar el ciclo asignado */
-}
-
-
-/* Títulos de Sección y Panel */
-.section-title, .panel-heading {
-    font-size: 1.05em; /* Un poco más pequeños */
+#userNameDisplay {
     font-weight: 600;
-    color: #34495e;
-    margin-top: 0;
-    margin-bottom: 10px; /* Menos margen inferior */
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 5px; /* Menos padding inferior */
-    display: block;
-    padding-left: 0;
-    padding-right: 0;
+    color: #3F3D56;
 }
+
+.admin-button-nav {
+    background-color: #6C63FF;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.admin-button-nav:hover {
+    background-color: #5850e0;
+}
+
+.logout-button {
+    background-color: #E57373;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.logout-button:hover {
+    background-color: #EF5350;
+    transform: translateY(-2px);
+}
+
+/* --- Contenido Principal y GRID SIMÉTRICO --- */
+.app-content {
+    padding: 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* --- Contenedor para la fila de 3 resultados --- */
+.results-row {
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* --- Estilo de Paneles (Tarjetas) --- */
+.panel-section {
+    background-color: #FFFFFF;
+    border: 1px solid #EAEBF0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.panel-section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.results-row .panel-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.results-row .panel-section .formula-text {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Clases para controlar la expansión de los paneles */
+.panel-span-3 {
+    grid-column: span 3;
+}
+
+/* --- Títulos de Paneles --- */
 .panel-heading {
-    border-bottom-color: #28a745;
+    font-size: 1em;
+    font-weight: 600;
+    color: #3F3D56;
+    margin: 0 0 10px 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    position: relative;
 }
 
-/* Grupos de Entrada de Datos */
-.input-group {
-    /* Inherits from .panel-section */
+.panel-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 30px;
+    height: 3px;
+    background-color: #6C63FF;
+    border-radius: 2px;
 }
 
-.system-label {
-    font-weight: 500;
-    color: #555;
-    margin-bottom: 5px;
-}
-
+/* --- Formularios y Entradas --- */
 .system-select,
 .system-input {
     width: 100%;
-    padding: 10px 12px; /* Un poco más pequeños */
-    border: 1px solid #cdd4da;
-    border-radius: 4px;
-    font-size: 0.95em; /* Fuente un poco más pequeña */
-    color: #495057;
-    background-color: #fff;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    padding: 12px;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    font-size: 0.95em;
     box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: #FDFDFD;
 }
 
 .system-select:focus,
 .system-input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    border-color: #6C63FF;
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
     outline: none;
 }
 
-.system-select:disabled {
-    background-color: #e9ecef;
-    cursor: not-allowed;
-    color: #888;
-}
+/* --- Textos de Información y Error --- */
+.info-text { color: #8D8D8D; font-size: 0.85em; }
+.error-text { color: #EF5350; font-weight: 500; font-size: 0.85em; }
 
-/* Textos de Información y Error */
-.info-text {
-    font-size: 0.85em; /* Más pequeño */
-    color: #6c757d;
-    margin-top: 3px; /* Menos margen */
-    margin-bottom: 0;
-}
-
-.error-text {
-    font-size: 0.85em; /* Más pequeño */
-    color: #dc3545;
-    margin-top: 3px;
-    margin-bottom: 0;
-    font-weight: 500;
-}
-
-/* Paneles de Información (Resultados) */
-.info-panel {
-    /* Inherits from .panel-section */
-}
-
-.panel-info-line {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 6px; /* Menos margen */
-    font-size: 1em; /* Ajustado */
-    color: #343a40;
-}
-
-.panel-info-label {
+/* --- Paneles de Resultados --- */
+.highlight-value, .highlight-date {
     font-weight: 600;
-    color: #555;
+    color: #6C63FF;
 }
 
-.highlight-value {
-    font-weight: bold;
-    color: #007bff;
+#proporcionalPagar {
+    font-size: 1.1em;
 }
 
-.highlight-date {
-    font-weight: bold;
-    color: #28a745;
+.details-display p, .date-display p {
+    margin: 0.5rem 0;
 }
 
-.date-display p, .details-display p {
-    margin: 6px 0; /* Menos margen */
-    font-size: 1em; /* Ajustado */
-    color: #343a40;
-}
-
-#diasProrrateo, #proporcionalPagar {
-    font-weight: bold;
-    color: #007bff;
-}
-
-/* Estilo para la fórmula de cálculo */
 .formula-text {
-    font-size: 1.1em; /* Slightly larger for readability */
-    font-weight: bold;
-    color: #34495e;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #3F3D56;
     text-align: center;
-    background-color: #e9f7ef; /* Light green background */
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #28a745; /* Green border */
+    background-color: #F7F8FC;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px dashed #D9D9D9;
     margin-top: 10px;
 }
 
-
-/* RESPONSIVIDAD */
-/* Para pantallas medianas (tablets y laptops pequeñas) */
-@media (max-width: 992px) {
-    .questions-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas para preguntas */
-        gap: 15px;
+/* --- Responsividad --- */
+@media (max-width: 1024px) {
+    .main-grid, .results-row {
+        grid-template-columns: repeat(2, 1fr);
     }
-    .results-grid {
-        grid-template-columns: 1fr; /* 1 columna para resultados en tablet */
-        gap: 15px;
+    .panel-span-3 {
+        grid-column: span 2;
     }
-    .app-content {
-        padding: 15px;
-    }
-    .system-header {
-        padding: 15px 15px 10px 15px;
-    }
-    .panel-section {
-        padding: 12px; /* Más pequeño aún */
-    }
-    .section-title, .panel-heading {
-        font-size: 0.95em;
-        margin-bottom: 8px;
-    }
-    .system-select, .system-input {
-        padding: 8px 10px;
-        font-size: 0.9em;
-    }
-    .info-text, .error-text {
-        font-size: 0.8em;
-    }
-    .panel-info-line, .date-display p, .details-display p, .formula-text {
-        font-size: 0.9em; /* Adjust formula text size for smaller screens */
-    }
-    /* El panel de ciclo resultado que abarca 2 columnas en 3 columnas, ahora abarca 1 en 2 columnas */
-    .panel-ciclo-resultado {
-        grid-column: span 1; /* Por defecto ocupa 1 columna */
+    .results-row .panel-section:last-child:nth-child(odd) {
+        grid-column: span 2;
     }
 }
 
-/* Para móviles */
+@media (max-width: 768px) {
+    .main-grid, .results-row {
+        grid-template-columns: 1fr;
+    }
+    .panel-span-2, .panel-span-3,
+    .results-row .panel-section:last-child:nth-child(odd) {
+        grid-column: span 1;
+    }
+}
+
 @media (max-width: 600px) {
-    .questions-grid, .results-grid {
-        grid-template-columns: 1fr; /* Una sola columna para todo */
-        gap: 10px; /* Más compacto */
+    .system-header {
+        flex-direction: column;
+        gap: 1rem;
     }
     .app-content {
-        padding: 10px;
-    }
-    .system-header h1 {
-        font-size: 1.8em;
-    }
-    .panel-section {
-        padding: 10px;
-        min-height: auto; /* Eliminar altura mínima en móviles */
-    }
-    .section-title, .panel-heading {
-        font-size: 0.9em;
-        margin-bottom: 5px;
-    }
-    .system-select, .system-input {
-        padding: 7px 8px;
-        font-size: 0.85em;
-    }
-    .info-text, .error-text {
-        font-size: 0.75em;
-    }
-    .panel-info-line, .date-display p, .details-display p, .formula-text {
-        font-size: 0.85em; /* Adjust formula text size for mobile */
-    }
-    .panel-ciclo-resultado {
-        grid-column: span 1; /* Sigue ocupando 1 columna */
+        padding: 1rem;
     }
 }

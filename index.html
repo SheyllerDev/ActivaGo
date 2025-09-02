@@ -10,13 +10,17 @@
     <div class="system-container">
         <header class="system-header">
             <h1>Proyecto Daniel Machoa</h1>
+            <div class="header-user-info">
+                <span id="userNameDisplay">Cargando...</span>
+                <button id="logoutButton" class="logout-button">Cerrar Sesión</button>
+            </div>
         </header>
 
         <div class="app-content">
+            <div class="main-grid">
 
-            <div class="questions-grid">
-                <div class="panel-section input-group">
-                    <label for="planTarifario" class="section-title">Plan Tarifario</label>
+                <div class="panel-section">
+                    <label for="planTarifario" class="panel-heading">Plan Tarifario</label>
                     <select id="planTarifario" class="system-select">
                         <option value="" disabled selected hidden>Seleccione un plan</option>
                         <option value="39.90">39.90</option>
@@ -29,29 +33,28 @@
                     </select>
                 </div>
 
-                <div class="panel-section input-group">
-                    <label for="mesSeleccionado" class="section-title">Selecciona el Mes</label>
-                    <select id="mesSeleccionado" class="system-select">
-                        </select>
+                <div class="panel-section">
+                    <label for="mesSeleccionado" class="panel-heading">Selecciona el Mes</label>
+                    <select id="mesSeleccionado" class="system-select"></select>
                     <p id="diasDelMes" class="info-text"></p>
                 </div>
 
-                <div class="panel-section input-group">
-                    <label for="fechaActivacion" class="section-title">Fecha de activación</label>
+                <div class="panel-section">
+                    <label for="fechaActivacion" class="panel-heading">Fecha de activación</label>
                     <input type="number" id="fechaActivacion" placeholder="Día (1-31)" min="1" max="31" class="system-input">
                     <p id="fechaActivacionError" class="error-text"></p>
                 </div>
 
-                <div class="panel-section input-group">
-                    <label for="lineasActivas" class="section-title">¿Cliente cuenta con líneas activas postpago en Entel?</label>
+                <div class="panel-section">
+                    <label for="lineasActivas" class="panel-heading">¿Cliente con líneas activas?</label>
                     <select id="lineasActivas" class="system-select">
                         <option value="NO">NO</option>
                         <option value="SI">SI</option>
                     </select>
                 </div>
                 
-                <div class="panel-section input-group">
-                    <label for="cicloFact" class="section-title">¿Cuál es su ciclo de Facturación?</label>
+                <div class="panel-section">
+                    <label for="cicloFact" class="panel-heading">¿Cuál es su ciclo?</label>
                     <select id="cicloFact" class="system-select">
                         <option value="" disabled selected hidden>Seleccione un ciclo</option>
                         <option value="1">1</option>
@@ -61,49 +64,47 @@
                     </select>
                 </div>
 
-                <div class="panel-section info-panel panel-ciclo-resultado">
-                    <h2 id="tituloCicloFact" class="panel-heading"></h2>
+                <div class="panel-section info-panel">
+                    <h2 id="tituloCicloFact" class="panel-heading">Ciclo Asignado</h2>
                     <p class="panel-info-line">
                         <span class="panel-info-label">Ciclo:</span> 
                         <span id="cicloResultado" class="highlight-value"></span>
                     </p>
                 </div>
                 
-            </div> 
-            
-            <div class="results-grid">
-                <div class="panel-section info-panel">
-                    <h2 class="panel-heading">INICIO | FIN DE FACTURACIÓN</h2>
-                    <div class="date-display">
-                        <p><strong>Inicio:</strong> <span id="fechaInicio" class="highlight-date"></span></p>
-                        <p><strong>Fin:</strong> <span id="fechaFin" class="highlight-date"></span></p>
+                <div class="panel-span-3 results-row">
+                    <div class="panel-section">
+                        <h2 class="panel-heading">Rango de la Facturación</h2>
+                        <div class="date-display">
+                            <p><strong>Inicio:</strong> <span id="fechaInicio" class="highlight-date"></span></p>
+                            <p><strong>Fin:</strong> <span id="fechaFin" class="highlight-date"></span></p>
+                        </div>
+                    </div>
+    
+                    <div class="panel-section">
+                        <h2 class="panel-heading">Detalles de la Facturación</h2>
+                        <div class="details-display">
+                            <p><strong>Fecha de Emisión:</strong> <span id="fechaEmision" class="highlight-date"></span></p>
+                            <p><strong>Fecha de Vencimiento:</strong> <span id="fechaVencimiento" class="highlight-date"></span></p>
+                            <p><strong>Días de Prorrateo:</strong> <span id="diasProrrateo" class="highlight-value"></span></p>
+                            <p><strong>Proporcional a Pagar:</strong> <span id="proporcionalPagar" class="highlight-value"></span></p>
+                        </div>
+                    </div>
+    
+                    <div class="panel-section">
+                        <h2 class="panel-heading">Fórmula del Cálculo Proporcional</h2>
+                        <p class="formula-text">(Plan Contratado / 30) * Días de Prorrateo</p>
                     </div>
                 </div>
 
-                <div class="panel-section info-panel">
-                    <h2 class="panel-heading">DETALLES DE FACTURACIÓN</h2>
-                    <div class="details-display">
-                        <p><strong>Fecha de Emisión:</strong>     <span id="fechaEmision" class="highlight-date"></span></p>
-                        <p><strong>Fecha de Vencimiento:</strong> <span id="fechaVencimiento" class="highlight-date"></span></p>
-                        <p><strong>Días de Prorrateo:</strong> <span id="diasProrrateo" class="highlight-value"></span></p>
-                        <p><strong>Proporcional a Pagar:</strong> <span id="proporcionalPagar" class="highlight-value"></span></p>
-                    </div>
-                </div>
-
-                <div class="panel-section info-panel" id="mensajeProrrateo">
-                    <h2 class="panel-heading">MENSAJE PARA EL CLIENTE</h2>
+                <div class="panel-section panel-span-3">
+                    <h2 class="panel-heading">Mensaje Para el Cliente</h2>
                     <p id="mensajeTexto"></p>
                 </div>
 
-                <div class="panel-section info-panel" id="formulaCalculo">
-                    <h2 class="panel-heading">FÓRMULA DE CÁLCULO PROPORCIONAL</h2>
-                    <p class="formula-text">
-                        (Plan Contratado / 30) * Días de Prorrateo
-                    </p>
-                </div>
             </div> 
         </div> 
-    </div> 
-    <script src="script.js"></script>
+    </div>
+    <script src="script.js" type="module"></script>
 </body>
 </html>

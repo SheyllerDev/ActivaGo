@@ -1,61 +1,51 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const usernameInput = document.getElementById('username');
-    const passwordInput = document.getElementById('password');
-    const loginButton = document.getElementById('loginButton');
-    const errorMessage = document.getElementById('errorMessage');
-    const loginForm = document.getElementById('loginForm');
-    const welcomeSection = document.getElementById('welcomeSection');
-    const welcomeMessage = document.getElementById('welcomeMessage');
-    const goToAppButton = document.getElementById('goToAppButton');
-    const loginTitle = document.getElementById('loginTitle');
+// Importar las funciones necesarias de los SDK de Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
-    // Define authorized users
-    const authorizedUsers = [
-        { document: '72376375', name: 'ACEVEDO GONZALES CRISTINA EUGENIA' },
-        { document: '71455467', name: 'ADRIANZEN REATEGUI KIARA JACOBA' },
-        { document: '46062843', name: 'PRECIADO YACILA ADY MARILIA' },
-        { document: '71426267', name: 'ALARCON CAMPOS GREYSS KELY' },
-        { document: '43800554', name: 'ALBAN TORRES ANGELICA MARIA' },
-        { document: '77088069', name: 'ALBERCA GARCIA LUIS ODILVER' },
-        { document: '74227179', name: 'ALBORNOZ RAMOS EMILDA' },
-        { document: '47604343', name: 'Sheyller Machoa' },
-        { document: '44110049', name: 'APOLAYA CÁCERES ALDO ANDRÉS' }
-    ];
+// --- CONFIGURACIÓN DE FIREBASE ---
+const firebaseConfig = {
+    apiKey: "AIzaSyC7esUXDazPJmGbbfDHIrLhgIxhQ8iEyM4",
+    authDomain: "activago-bebad.firebaseapp.com",
+    projectId: "activago-bebad",
+    storageBucket: "activago-bebad.firebasestorage.app",
+    messagingSenderId: "380945965051",
+    appId: "1:380945965051:web:5215a89a82c60040b9755e"
+};
 
-    loginButton.addEventListener('click', () => {
-        const username = usernameInput.value;
-        const password = passwordInput.value;
+// Inicializar Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-        // Find if the entered username (document) and password match any authorized user
-        const foundUser = authorizedUsers.find(user => user.document === username && user.document === password);
+// --- REFERENCIAS AL DOM ---
+const usernameInput = document.getElementById('username');
+const passwordInput = document.getElementById('password');
+const loginButton = document.getElementById('loginButton');
+const errorMessage = document.getElementById('errorMessage');
 
-        if (foundUser) {
-            loginForm.style.display = 'none';
-            loginTitle.textContent = '¡Bienvenido!';
-            welcomeMessage.textContent = `Bienvenido(a), ${foundUser.name}!`;
-            welcomeSection.style.display = 'block';
-            errorMessage.textContent = '';
-        } else {
-            errorMessage.textContent = 'Usuario o contraseña incorrectos. Por favor, verifique sus credenciales.';
-        }
-    });
+// --- LÓGICA DE LOGIN DIRECTO ---
+const handleLogin = () => {
+    const dni = usernameInput.value.trim();
+    const email = dni + '@sistema.com';
+    const password = passwordInput.value;
 
-    goToAppButton.addEventListener('click', () => {
-        // Redirect to your main application page
-        // Assuming your main application page is index.html in the same directory
-        window.location.href = 'index.html';
-    });
+    if (!dni || !password) {
+        errorMessage.textContent = 'Por favor, ingrese DNI y contraseña.';
+        return;
+    }
+    errorMessage.textContent = '';
 
-    // Allow pressing Enter to log in
-    usernameInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            loginButton.click();
-        }
-    });
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Autenticación exitosa, redirigir inmediatamente a la página principal
+            window.location.href = 'index.html';
+        })
+        .catch((error) => {
+            // Manejo de errores
+            errorMessage.textContent = 'Usuario o contraseña incorrectos.';
+        });
+};
 
-    passwordInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            loginButton.click();
-        }
-    });
-});
+// Event listeners
+loginButton.addEventListener('click', handleLogin);
+passwordInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleLogin(); });
+usernameInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleLogin(); });
